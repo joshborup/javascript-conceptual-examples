@@ -1,7 +1,11 @@
+// In computing, memoization or memoisation is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
 function ExpensiveOperation() {
+  // the cache where the results will be stored
   this.cache = {};
 }
 
+// this can be a time consuming and expensive operation and the function has no way of remembering if the same inputs have been passed multiple times, thus it will run the logic every time. Running an expensive function with the exact same inputs mulitple times will result in a waste time and resources.
 ExpensiveOperation.prototype.doThing = function(num) {
   let result = 1;
   for (let i = 0; i < num; i++) {
@@ -16,6 +20,7 @@ ExpensiveOperation.prototype.doThing = function(num) {
   return result;
 };
 
+// when the memoized function is called with specific inputs, we store the inputs and results in our cache, if the function is called again with those same inputs we check the cache first for matching inputs and return the result rather than running the expensive logic again
 ExpensiveOperation.prototype.doThingMemoized = function(num) {
   if (this.cache.hasOwnProperty(num)) {
     return this.cache[num];
@@ -35,6 +40,7 @@ ExpensiveOperation.prototype.doThingMemoized = function(num) {
   }
 };
 
+// Example:
 const test = new ExpensiveOperation();
 console.time("not memoized function time");
 
