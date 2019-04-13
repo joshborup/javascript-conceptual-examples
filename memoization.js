@@ -1,3 +1,10 @@
+// ============ Memoize =============
+// ==================================
+
+// memorandum => "to be remembered" =short> memo
+// ize => "to make or become"
+// Memoize => to make a function remember
+
 // In computing, memoization or memoisation is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
 
 function ExpensiveOperation() {
@@ -21,6 +28,7 @@ ExpensiveOperation.prototype.doThing = function(num) {
 };
 
 // when the memoized function is called with specific inputs, we store the inputs and results in our cache, if the function is called again with those same inputs we check the cache first for matching inputs and return the result rather than running the expensive logic again
+
 ExpensiveOperation.prototype.doThingMemoized = function(num) {
   if (this.cache.hasOwnProperty(num)) {
     return this.cache[num];
